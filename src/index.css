@@ -8,7 +8,7 @@ body {
   background-color: #F6F8E1;
 }
 
-/* Add padding and margin to center the Flipbook and ensure it doesn't overflow */
+/* Ad padding and margin to center the Flipbook and ensure it doesn't overflow */
 .storybook-container {
   display: flex;
   justify-content: center; /* Center horizontally */
