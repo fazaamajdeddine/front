@@ -1,0 +1,96 @@
+/* Global Styles */
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.w-full {
+  width: 100%;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.relative {
+  position: relative;
+}
+
+.transition-all {
+  transition: all 0.3s ease;
+}
+
+.transition-opacity {
+  transition: opacity 0.5s ease;
+}
+
+/* Hover Effect for Draggable Elements */
+.dragging {
+  opacity: 0.6;
+  z-index: 10;
+}
+
+.drop-zone-highlight {
+  border-color: rgba(0, 128, 0, 0.7);
+  background-color: rgba(0, 128, 0, 0.2);
+}
+
+/* Progress Bar */
+.bg-green-500 {
+  background-color: #48bb78;
+}
+
+.bg-gray-300 {
+  background-color: #e2e8f0;
+}
+
+.bg-gray-200 {
+  background-color: #edf2f7;
+}
+
+.bg-opacity-80 {
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+.border-dashed {
+  border-style: dashed;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* Sidebar */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.hover\:scale-110:hover {
+  transform: scale(1.1);
+}
+
+.container img{
+  background-size: cover; /* Or "contain", depending on your needs */
+  background-repeat: no-repeat;
+  background-position: center; /* Center the background image */
+}

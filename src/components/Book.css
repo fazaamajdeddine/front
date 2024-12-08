@@ -1,0 +1,99 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px; /* Add padding to the sides */
+}
+
+.page {
+  position: relative;
+  background-color: #f5f5f5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 10px;
+  height: 100%; /* Ensure the page takes up the full height of the container */
+}
+
+.page-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%; /* Ensure the content fills the full height of the page */
+  padding: 0; /* Remove extra padding */
+  position: relative; /* Needed for overlaying text */
+}
+
+.page-image {
+  width: 100%; /* Make the image fill the full width of the page */
+  height: 100%; /* Make the image fill the full height of the page */
+  object-fit: cover; /* Ensure the image covers the entire area without distortion */
+  object-position: center; /* Center the image in case it's larger than the container */
+}
+
+.page-footer {
+  font-size: 14px;
+  color: #fff;
+  position: absolute;
+  bottom: 20px; /* Position the footer at the bottom */
+  left: 50%;
+  transform: translateX(-50%); /* Center the footer horizontally */
+  z-index: 10; /* Ensure the footer appears above the image */
+  padding: 5px 10px;
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background for contrast */
+  border-radius: 4px;
+}
+
+/* Button Styles */
+.material-button {
+  display: inline-block;
+  padding: 0 16px;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 36px;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+  background-color: #2196f3;
+  color: #ffffff;
+  border: none;
+}
+
+.material-button:hover {
+  background-color: #1976d2;
+}
+
+.material-button:active {
+  background-color: #0d47a1;
+}
+
+.material-button.disabled {
+  background-color: #bdbdbd;
+  cursor: not-allowed;
+}
+
+.material-button.disabled:hover {
+  background-color: #bdbdbd;
+}
+
+/* Button Sizes */
+.material-button.small {
+  font-size: 12px;
+  line-height: 24px;
+  padding: 0 8px;
+}
+
+.material-button.large {
+  font-size: 16px;
+  line-height: 48px;
+  padding: 0 24px;
+}

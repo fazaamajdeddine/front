@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  height: 100%;
+  background-color: #F6F8E1;
+}
+
+/* Add padding and margin to center the Flipbook and ensure it doesn't overflow */
+.storybook-container {
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  height: 100vh; /* Full screen height */
+  width: 100vw; /* Full screen width */
+  padding: 20px; /* Padding from the top, left, and right */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  overflow: hidden; /* Prevent scrolling */
+}
+
+/* Optionally, you can make the flipbook a little smaller */
+.flipbook-container {
+  max-width: 600px; /* Limit the maximum width */
+  max-height: 800px; /* Limit the maximum height */
+  width: 100%; /* Allow the flipbook to scale within the max size */
+  height: auto; /* Maintain aspect ratio */
+  padding: 10px; /* Padding around the flipbook */
+}
+
+

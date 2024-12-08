@@ -1,0 +1,35 @@
+{
+    "pages": [
+      {
+        "type": "cover",
+        "image": "path/to/cover-image.jpg",
+        "content": "<h2>Boby in the Shop</h2><p>A story about Boby the cat and his adventure in the neighbor's shop to catch a clever mouse.</p>"
+      },
+      {
+        "type": "text",
+        "image": "path/to/scene1-image.jpg",
+        "content": "<h2>Scene 1</h2><p>The Neighbor is thinking deeply, standing behind the counter in her old shop full of traditional products.</p><p>The Neighbor: \"Customer complaints are threatening my business... I need to find a solution without using medicine. Medicine could harm the products and affect the customers' health.\"</p><p>The Neighbor: \"I think I found a solution!\" (She closes the shop door and walks down the long street with some small shops and vegetable carts. People are seen walking by.)</p>"
+      },
+      {
+        "type": "text",
+        "image": "path/to/scene2-image.jpg",
+        "content": "<h2>Scene 2</h2><p>The door at Aunt Sisi's house knocks. Boby the cat is sleeping on a cushion behind the door. He wakes up, annoyed, and meows to get his owner's attention. Outside, Aunt Sisi and the neighbor are talking.</p><p>The Neighbor: \"Sister, I have a problem that’s troubling me...\"</p><p>Aunt Sisi: \"I hope it's something good!\"</p><p>The Neighbor: \"It seems there's a mouse in my shop. The carpenter’s wife told me she found chew marks on a tomato, and she's sure it's from a rodent... This isn’t the first complaint.\"</p><p>Aunt Sisi: \"That’s not a small problem. Mice can damage your goods and spread diseases to your customers!\"</p><p>The Neighbor: \"That's why I came to you for help. Can you assist me?\"</p><p>(Boby the cat listens, trying to understand what they are talking about.)</p><p>(They both look at Boby, as if they have an idea.)</p>"
+      },
+      {
+        "type": "text",
+        "image": "path/to/scene3-image.jpg",
+        "content": "<h2>Scene 3</h2><p>Aunt Sisi walks toward the neighbor's shop with Boby peeking out of her basket. Boby looks confused as she walks through the narrow stone-paved street. The sun is setting, and children are playing in the garden.</p>"
+      },
+      {
+        "type": "text",
+        "image": "path/to/scene4-image.jpg",
+        "content": "<h2>Scene 4</h2><p>The Neighbor: \"Thank you, Aunt Sisi! Boby, I welcome you to the shop! I hope you can help me get rid of the mouse.\" (Aunt Sisi gently places Boby in the shop. The shop is dim, and Boby is a bit unsettled at first, but curiosity gets the better of him, and he starts exploring the shop.)</p>"
+      },
+      {
+        "type": "text",
+        "image": "path/to/scene5-image.jpg",
+        "content": "<h2>Scene 5</h2><p>Boby moves around, sniffing... He hears a strange noise and notices some dried fish placed by the neighbor earlier. He starts eating it after sniffing it.</p><p>Boby: \"There’s something strange going on here!\" (He hears more sounds, moves his ears, and then pounces on a corner, pulling out a mouse.)</p><p>Boby: \"I haven’t eaten a mouse in a long time!\"</p><p>The Clever Mouse: \"Please! Don’t hurt me!\"</p><p>Boby: \"What’s your name? Where did you come from?\"</p><p>The Clever Mouse: \"They call me 'Shateer,' and I came from the nearby field. I almost starved there after the rain stopped. There was nothing left for me to eat.\"</p><p>Boby: \"So, you come to spoil people’s goods?\"</p><p>The Clever Mouse: \"I’m sorry, I didn’t mean to...\"</p><p>Boby: \"Good, you admit it.\"</p><p>The Clever Mouse: \"Yes, I admit it...\"</p><p>Boby: \"Well then, I’ll eat you.\"</p><p>The Clever Mouse: \"Please don’t eat me, Mr. Cat!\"</p><p>Boby: \"I’ll only eat half of you, so the other half can spoil.\"</p><p>The Clever Mouse: \"The shop owner has plenty of salted meat here. I can show you where it is, and you can spare me!\"</p><p>Boby: \"No, I won’t take that idea. I don’t want to become like you. But I’ll spare you because you seem kind. In return, you must not spoil any more goods.\"</p><p>The Clever Mouse: \"I promise, Mr. Cat!\"</p><p>Boby: \"Aunt Sisi always puts food outside her house for animals. You can eat that. If I catch you spoiling anything again, I will eat you.\"</p><p>The Clever Mouse: \"Thank you so much, Mr. Cat. Please let me go, your claws are hurting my back.\" (Boby lets the mouse go and looks at him with caution. After a moment...) </p><p>Boby: \"Where’s the salted meat so I can check it?\"</p><p>The End</p>"
+      }
+    ]
+  }
+  
