@@ -13,7 +13,7 @@ const LastPageStory = ({ onStartGame, onExit }: { onStartGame: () => void; onExi
           fontWeight: "bold",
         }}
       >
-        احسنت اقد اكملت قراة قصةدينو لا يملك أجنحة
+        احسنت اقد اكملت قراة قصة دينو لا يملك أجنحة
 
         <br />
         الان يمكنك البدئ بالعب

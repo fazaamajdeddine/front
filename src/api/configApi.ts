@@ -2,10 +2,9 @@ import axios from "axios";
 import { useAuthStore } from "../stores";
 
 export const configApi = axios.create({
-  baseURL: "http://localhost:8080",
+  baseURL: "https://backend-palmyra.fly.dev",
   withCredentials: true, // This will allow cookies to be sent with requests
 });
-
 // interceptor
 //configApi.interceptors.request.use((config) => {
 //  const token = useAuthStore.getState().token;

@@ -5,7 +5,7 @@ import { KidResponse } from "../interfaces";
 export class KidService {
   static getAllKids = async (): Promise<KidResponse[]> => {
     try {
-      const { data } = await configApi.get<{ status: number; message: string; data: KidResponse[] }>("/api/kids/get-kids");
+      const { data } = await configApi.get<{ status: number; message: string; data: KidResponse[] }>("/kids/get-kids");
       console.log(data);
       return data.data;
     } catch (error) {
@@ -20,7 +20,7 @@ export class KidService {
 
   static getKid = async (id: string): Promise<KidResponse> => {
     try {
-      const { data } = await configApi.get<KidResponse>(`/api/kids/kids/${id}`);
+      const { data } = await configApi.get<KidResponse>(`/kids/kids/${id}`);
       return data;
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -34,7 +34,7 @@ export class KidService {
 
   static createKid = async (kid: Partial<KidResponse>): Promise<KidResponse> => {
     try {
-      const { data } = await configApi.post<KidResponse>("/api/kids/add", kid);
+      const { data } = await configApi.post<KidResponse>("/kids/add", kid);
       console.log(data);
       return data;
     } catch (error) {
@@ -52,7 +52,7 @@ export class KidService {
     kid: Partial<KidResponse>
   ): Promise<KidResponse> => {
     try {
-      const { data } = await configApi.put<KidResponse>(`/api/kids/update/${id}`, kid);
+      const { data } = await configApi.put<KidResponse>(`/kids/update/${id}`, kid);
       return data;
     } catch (error) {
       if (error instanceof AxiosError) {
@@ -66,7 +66,7 @@ export class KidService {
 
   static deleteKid = async (id: string): Promise<void> => {
     try {
-      await configApi.delete(`/api/kids/delete/${id}`);
+      await configApi.delete(`/kids/delete/${id}`);
     } catch (error) {
       if (error instanceof AxiosError) {
         console.error(error.response?.data);

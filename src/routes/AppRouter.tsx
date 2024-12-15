@@ -31,7 +31,7 @@ export const AppRouter = () => {
 
         {/* App Routes (AppLayout wrapper) */}
         <Route path="/" element={<AppLayout />}>
-          <Route path="home" element={<HomePage />} />
+          <Route path="/" element={<HomePage />} />
           <Route path="library" element={<Library />} />
           <Route path="videos" element={<Videos />} />
           <Route path="contact" element={<Contact />} />
@@ -43,7 +43,7 @@ export const AppRouter = () => {
 
 
         {/* Fallback Route */}
-        <Route path="*" element={<Navigate to="/auth" />} />
+        <Route path="/home" element={<Navigate to="/auth" />} />
       </Routes>
     </BrowserRouter>
   );

@@ -111,7 +111,7 @@ const Videos: React.FC = () => {
         <button onClick={handleNextPage}>
           <img src="/arrow-circle-broken-right.svg" alt="Next" className="w-6 h-6" />
         </button>
-      </div>
+      </div>  
     </div>
   );
 };

@@ -33,48 +33,51 @@ export const HomePage = () => {
   return (
     <div className="mx-0">
       {/* Explore Section */}
-      <div className="flex justify-between items-center my-8 px-20">
-        {/* Titles and Text Section */}
-        <div className="flex flex-col items-start space-y-4">
-          <div
-            className="flex items-center space-x-4"
-            style={{ transform: 'rotate(-8.72deg)' }}
-          >
+      <div className="flex flex-col items-center">
+        <div className="flex justify-center items-center my-8 px-20 gap-x-12">
+          {/* Titles and Text Section */}
+          <div className="flex flex-col items-start space-y-4">
             <div
-              className="border-dashed border-2 border-[#FF1276] rounded-[12px] flex items-center justify-center"
-              style={{ width: '410px', height: '40px' }}
+              className="flex items-center space-x-4"
+              style={{ transform: 'rotate(-8.72deg)' }}
             >
-              <h2
-                className="font-bold text-[#ADDCEB]"
-                style={{
-                  fontSize: '36px',
-                  textShadow:
-                    '2px 2px 0 rgba(255, 18, 118, 0.5), 4px 4px 0 rgba(255, 255, 255, 0.3)',
-                }}
+              <div
+                className="border-dashed border-2 border-[#FF1276] rounded-[12px] flex items-center justify-center"
+                style={{ width: '410px', height: '40px' }}
               >
-                Fun to Create
-              </h2>
+                <h2
+                  className="font-bold text-[#ADDCEB]"
+                  style={{
+                    fontSize: '36px',
+                    textShadow:
+                      '2px 2px 0 rgba(255, 18, 118, 0.5), 4px 4px 0 rgba(255, 255, 255, 0.3)',
+                  }}
+                >
+                  Fun to Create
+                </h2>
+              </div>
             </div>
+
+            {/* Main Content */}
+            <h3 className="text-[32px] font-bold text-[#FBA628] pt-6">READ AND PLAY</h3>
+            <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae
+              justo ac sapien cursus viverra nec at enim.
+            </p>
+            <button className="mt-8 text-[18px] font-bold text-white bg-[#FBA628] rounded-md px-8 py-4 h-[60] w-[189]">
+              Explore
+            </button>
           </div>
 
-          {/* Main Content */}
-          <h3 className="text-[64px] font-bold text-[#FBA628]">READ AND PLAY</h3>
-          <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae
-            justo ac sapien cursus viverra nec at enim.
-          </p>
-          <button className="mt-8 text-[18px] font-bold text-white bg-[#FBA628] rounded-md px-8 py-4 h-[60] w-[189]">
-            Explore
-          </button>
-        </div>
-
-        {/* Image Section with Fade Animation */}
-        <div className="relative w-1/2 h-auto">
-          <img src="/explore-photo.svg" alt="Explore" className="w-full h-auto" />
+          {/* Image Section with Fade Animation */}
+          <div className="relative w-1/2 h-auto">
+            <img src="/explore-photo.svg" alt="Explore" className="w-[400px] h-auto" />
+          </div>
         </div>
       </div>
 
-      {/* New White Section */}
+
+      {/* Top picks Section */}
       <div className="bg-[#FBA628] w-full h-[183px] flex flex-col items-center justify-center">
         <p className="text-[#FF1276] text-[16px] font-semibold mb-1">TOP PICKS</p>
         <h2 className="text-[#ffffff] text-[32px] font-bold mb-1">Sort by category</h2>
@@ -94,22 +97,26 @@ export const HomePage = () => {
         </div>
       </div>
 
-       {/* Grid with StoryCards */}
-       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-20 mt-6">
-        <StoryCard 
-          onClick={() => handleStoryCardClick('story-0')} 
-          coverImage="/story.svg" // Cover for the first story
-        />
-        <StoryCard 
-          onClick={() => handleStoryCardClick('story-1')} 
-          coverImage="/dinocover.svg" // Cover for the Dino story
-        />
-      </div>
+     {/* Grid with StoryCards */}
+        {/* Grid with StoryCards */}
+<div className="grid grid-cols-2 md:grid-cols-4 gap-5 px-20 mt-6">
+  <StoryCard
+    onClick={() => handleStoryCardClick('story-0')}
+    coverImage="/story.svg" // Cover for the first story
+    title="بوبي في الدكان"
+  />
+  <StoryCard
+    onClick={() => handleStoryCardClick('story-1')}
+    coverImage="/dinocover.svg" // Cover for the Dino story
+    title="دينو لا يملك أجنحة"
+  />
+</div>
+
 
 
 
       {/* Divider */}
-      <hr className="my-8 border-t border-gray-300" />
+      <hr className="my-8 border-dashed border-1 border-[#FF1276]" />
 
       {/* Floating Button to Top */}
       <button

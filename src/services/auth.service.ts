@@ -5,13 +5,13 @@ import { LoginResponse, RegisterUser } from "../interfaces";
 export class AuthService {
     static login = async (email: string, password: string): Promise<LoginResponse> => {
         try {
-            const { data } = await configApi.post<LoginResponse>('/api/auth/login', { email, password });
+            const { data } = await configApi.post<LoginResponse>('/auth/login', { email, password });
             console.log("API Response:>>>>>>>>>", data);
             return data;
         } catch (error) {
             if (error instanceof AxiosError) {
                 console.error(error.response?.data);
-                throw new Error(error.response?.data?.message );
+                throw new Error(error.response?.data?.message);
             }
             console.error(error);
             throw new Error("An unexpected error occurred while logging in. Please try again.");
@@ -20,7 +20,7 @@ export class AuthService {
 
     static registerUser = async (dataUser: RegisterUser): Promise<{ message: string }> => {
         try {
-            const { data } = await configApi.post<{ message: string }>('/api/auth/register', dataUser);
+            const { data } = await configApi.post<{ message: string }>('/auth/register', dataUser);
             return data;
         } catch (error) {
             if (error instanceof AxiosError) {

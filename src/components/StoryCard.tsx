@@ -3,24 +3,27 @@ import React from 'react';
 
 interface StoryCardProps {
   onClick: () => void; 
-  coverImage: string; // Add coverImage prop
+  coverImage: string; // Cover image for the story
+  title: string; // Title for the story
 }
 
-const StoryCard: React.FC<StoryCardProps> = ({ onClick, coverImage }) => {
+const StoryCard: React.FC<StoryCardProps> = ({ onClick, coverImage, title }) => {
   return (
     <div 
-      className="relative w-[289px] h-[352px] bg-[#F7EFCC] border border-[#C7C7C7] rounded-lg flex items-center justify-center cursor-pointer" 
+      className="relative w-[289px] h-[352px] bg-[#F7EFCC] border border-[#C7C7C7] rounded-lg cursor-pointer overflow-hidden" 
       onClick={onClick} 
     >
-      {/* Use the coverImage prop for the image source */}
+      {/* Cover image */}
       <img
         src={coverImage}
-        alt="Story Icon"
-        className="absolute top-1/2 transform -translate-y-1/2 w-auto h-auto"
+        alt="Story Cover"
+        className="absolute top-0 left-1/2 transform -translate-x-1/2 w-[193px] h-[309px] object-cover z-10"
       />
 
-      {/* Bottom container */}
-      <div className="absolute bottom-0 w-full h-[96px] bg-[#FBA628] rounded-b-lg border-t border-[#C7C7C7]" />
+      {/* Bottom container with title */}
+      <div className="absolute bottom-0 w-full h-[96px] bg-[#FBA628] rounded-b-lg border-t border-[#C7C7C7] flex items-end pb-2">
+        <p className="text-white text-center font-semibold w-full">{title}</p>
+      </div>
     </div>
   );
 };
