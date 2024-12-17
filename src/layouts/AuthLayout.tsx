@@ -1,8 +1,8 @@
 import { Link, Navigate, Outlet } from "react-router-dom";
 import { useAuthStore } from "../stores";
-
 export const AuthLayout = () => {
   const authStatus = useAuthStore((state) => state.status);
+  console.log("Auth Status:", authStatus); // Debugging line
 
   if (authStatus === "pending") return <div>Loading...</div>;
   if (authStatus === "authorized") return <Navigate to="/entranceGate" />;
