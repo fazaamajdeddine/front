@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
           </Link>
 
           <Link
-            to="/signup"
+            to="/register"
             className="flex items-center justify-center bg-[#FBA628] text-white rounded-[8px] text-[16px] font-medium"
             style={{ width: '94px', height: '44px' }}
           >
