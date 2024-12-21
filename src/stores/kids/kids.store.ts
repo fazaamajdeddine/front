@@ -21,13 +21,31 @@ const storeApi: StateCreator<KidsState> = (set) => ({
 
   // Fetch all kids, optionally filtering by institutionId
   getAllKids: async () => {
-    try {
-      const res = await KidService.getAllKids();
-      set({ kids: res });
-    } catch (error) {
-      toast.error("Error fetching kids.");
-      throw new Error("Error fetching kids.");
+
+    const userId = useAuthStore.getState().user?._id; // Get the current user ID from the auth store
+
+    if (!userId) {
+
+      toast.error("User  not authenticated.");
+
+      return;
+
     }
+
+    try {
+
+      const res = await KidService.getAllKids(userId); // Pass the userId to filter kids
+
+      set({ kids: res });
+
+    } catch (error) {
+
+      toast.error("Error fetching kids.");
+
+      throw new Error("Error fetching kids.");
+
+    }
+
   },
 
   // Fetch a specific kid by ID
@@ -44,20 +62,20 @@ const storeApi: StateCreator<KidsState> = (set) => ({
   // Create a new kid
   createKid: async (kid: KidResponse) => {
     try {
-        const userId = useAuthStore.getState().user?._id; // Get the current user ID from the auth store
-        const res = await KidService.createKid({ ...kid, parentId: userId }); // Pass the parentId
-        set((state) => ({
-            kids: [...state.kids, res],
-        }));
-        toast.success("Kid created successfully!");
+      const userId = useAuthStore.getState().user?._id; // Get the current user ID from the auth store
+      const res = await KidService.createKid({ ...kid, parentId: userId }); // Pass the parentId
+      set((state) => ({
+        kids: [...state.kids, res],
+      }));
+      toast.success("Kid created successfully!");
     } catch (error) {
-        toast.error("Error creating the kid.");
-        throw new Error("Error creating the kid.");
+      toast.error("Error creating the kid.");
+      throw new Error("Error creating the kid.");
     }
-},
+  },
 
-  // Delete a kid by ID
-  deleteKid: async (id: string) => {
+   // Delete a kid by ID
+   deleteKid: async (id: string) => {
     try {
       await KidService.deleteKid(id);
       set((state) => ({

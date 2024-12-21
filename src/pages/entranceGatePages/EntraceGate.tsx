@@ -21,7 +21,7 @@ export const EntranceGate = () => {
         const fetchKids = async () => {
             setIsLoading(true);
             try {
-                getAllKids(); // Fetch kids data
+                await getAllKids(); // Fetch kids data
             } catch (error) {
                 console.error(error);
             } finally {
@@ -38,7 +38,7 @@ export const EntranceGate = () => {
     };
 
     return (
-        <div className="relative bg-app-background min-h-screen flex flex-col items-center">
+        <div className="relative bg-app-background min-h-screen flex flex-col items-center justify-center"> {/* Centered vertically */}
             {/* Page Logo */}
             <div className="absolute top-4 left-4">
                 <img src="/edhib.svg" alt="Page Logo" className="w-36" />
@@ -54,7 +54,7 @@ export const EntranceGate = () => {
                 <Loader /> // Show loader when data is loading
             ) : (
                 // Kids Cards Section
-                <div className="flex flex-col gap-4 w-full max-w-3xl mt-20 mx-auto justify-center items-center">
+                <div className="flex flex-col gap-4 w-full max-w-3xl mx-auto justify-center items-center">
                     {kids.length === 0 ? (
                         <div className="text-lg font-semibold text-gray-600 text-center">
                             No kids available
@@ -76,7 +76,7 @@ export const EntranceGate = () => {
                                             e.stopPropagation(); // Prevent click from selecting the kid
                                             console.log(`Editing kid: ${kid.name}`);
                                         }}
-                                        className="w-[175px] px-4 py-2 text-lg font-semibold rounded-md"
+                                        className="w-[175px] h-[35px] px-4 py-2 text-sm font-semibold rounded-md"
                                         style={{
                                             backgroundColor: "rgba(234, 241, 239, 0.35)", // Background with 35% opacity
                                             border: "2px dashed #75B936", // Dotted border
@@ -92,7 +92,7 @@ export const EntranceGate = () => {
                                             e.stopPropagation(); // Prevent click from selecting the kid
                                             deleteKid(kid._id);
                                         }}
-                                        className="w-[175px] px-4 py-2 text-lg font-semibold rounded-md"
+                                        className="w-[175px] h-[35px] px-4 py-2 text-sm font-semibold rounded-md"
                                         style={{
                                             backgroundColor: "rgba(234, 241, 239, 0.35)", // Background with 35% opacity
                                             border: "2px dashed #75B936", // Dotted border
