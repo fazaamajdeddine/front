@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronDown, faBuilding, faUser } from "@fortawesome/free-solid-svg-icons";
+import {  faBuilding, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useAuthStore } from "../../stores";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
@@ -15,7 +15,7 @@ export const RegisterUser = ()  => {
   const [password, setPassword] = useState("");
   const [accountType, setAccountType] = useState<"Establishment" | "Parent" | null>(null);
   const [showPassword, setShowPassword] = useState(false);
-  const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
+ // const [languageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validateForm = () => {

@@ -2,8 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faChevronDown, faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; // Import the logout icon
-import { useAuthStore } from '../stores';
-import { useKidsStore } from '../stores';
+import { useAuthStore } from "../stores";
 import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Navbar: React.FC = () => {
@@ -11,9 +10,8 @@ const Navbar: React.FC = () => {
   const [isLanguageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [activeLink, setActiveLink] = useState(location.pathname);
   const navigate = useNavigate(); // Initialize the navigate function
+  const authStatus = useAuthStore((state) => state.status);
 
-  const { status, user } = useAuthStore(); // Get auth status and user
-  const selectedKid = useKidsStore((state) => state.kid); // Get the selected kid from the kids store
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -52,17 +50,17 @@ const Navbar: React.FC = () => {
 
           <div className="flex-1" />
           {/* Conditional Rendering for Login/Signup or Kid's Name and Avatar */}
-          {status === "unauthorized" ? (
+          {authStatus === "unauthorized" ? (
             <>
               <Link
-                to="/login"
-                className="mr -2 px-3 py-2 text-black rounded-md text-sm border border-[#FBA628]"
+                to="/auth" // Navigate to the login page
+                className="mr-2 px-3 py-2 text-black rounded-md text-sm border border-[#FBA628]"
               >
                 Login
               </Link>
 
               <Link
-                to="/register"
+                to="/auth/register" // Navigate to the register page
                 className="flex items-center justify-center bg-[#FBA628] text-white rounded-[8px] text-[16px] font-medium"
                 style={{ width: '94px', height: '44px' }}
               >
@@ -72,14 +70,15 @@ const Navbar: React.FC = () => {
           ) : (
             <div className="flex items-center">
               <button
-                onClick={() => navigate("/entranceGate")} // Use navigate to go to entranceGate
+                onClick={() => navigate("/entranceGate")} // Navigate to the entrance gate
                 className="flex items-center bg-[#FE207D] text-white rounded-md px-3 py-2"
               >
-                <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" /> {/* Logout icon */}
-
+                <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
+                Logout
               </button>
             </div>
           )}
+
           {/* Language Dropdown */}
           <div className="relative mr-4">
             <button

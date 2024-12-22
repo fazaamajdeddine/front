@@ -4,6 +4,7 @@ import { Preferences, getCategoryColor } from "../helpers/helpers";
 import { Loader } from "../components/Loader";
 import CategoryCard from "../components/CategoryCard";
 import StoryCard from "../components/StoryCard";
+import RadioPlayer from "../components/RadioPlayer";
 
 export const HomePage = () => {
   const [categories, setCategories] = useState<
@@ -110,7 +111,7 @@ export const HomePage = () => {
       </div>
 
       {/* Grid with StoryCards */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 px-20 mt-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5 mx-auto mt-6 max-w-6xl px-4">
         <StoryCard
           onClick={() => handleStoryCardClick('story-0')}
           coverImage="/story.svg" // Cover for the first story
@@ -124,15 +125,13 @@ export const HomePage = () => {
       </div>
 
       {/* Divider */}
-      <hr className="my-8 border-dashed border-1 border-[#FF1276]" />
+      <hr className="custom-divider" />
+      {/* Radio Player Button */}
 
-      {/* Floating Button to Top */}
-      <button
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        className="fixed bottom-4 right-4 p-3 bg-[#FF1276] text-white rounded-full hover:bg-[#FF1276] shadow-lg focus:outline-none "
-      >
-        <span className="text-2xl font-bold">↑</span>
-      </button>
+      <RadioPlayer />
+
+      {/* Floating Button to Scroll to Top */}
+    
     </div>
   );
 };

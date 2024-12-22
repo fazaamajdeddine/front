@@ -39,7 +39,7 @@ const Footer: React.FC = () => {
     </div>
 
     {/* Bottom Copyright Text */}
-    <p className="mt-6">&copy; {new Date().getFullYear()} Your Platform Name. All rights reserved.</p>
+    <p className="mt-6">&copy; {new Date().getFullYear()} Palmyra. All rights reserved.</p>
   </footer>
   );
 };

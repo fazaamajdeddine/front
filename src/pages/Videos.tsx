@@ -1,16 +1,15 @@
-// src/pages/Videos.tsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
 const Tabs = ['All Courses', 'Courses', 'Wishlist', 'Completed'];
 
 // VideoCard component
-const VideoCard: React.FC<{ type: string }> = ({ type }) => (
+const VideoCard: React.FC<{ type: string; coverImage: string; title: string }> = ({ type, coverImage, title }) => (
   <div className="rounded-lg overflow-hidden p-4 relative group">
     <div className="relative">
       <img
-        src="/story.svg" // Replace with actual video thumbnail
+        src={coverImage} // Use the provided video thumbnail
         alt="Video Thumbnail"
         className="w-full h-[180px] object-cover rounded-lg transition-opacity duration-300 group-hover:opacity-70"
         style={{ borderRadius: '22px' }}
@@ -20,7 +19,7 @@ const VideoCard: React.FC<{ type: string }> = ({ type }) => (
       </div>
     </div>
     <div className="p-2">
-      <h2 className="font-bold text-sm mb-1">Title of the Story - {type}</h2>
+      <h2 className="font-bold text-sm mb-1">{title} - {type}</h2>
       <div className="flex items-center text-green-600 text-xs mb-1">
         <FontAwesomeIcon icon={faUser} className="mr-1" />
         <span>Ahmed</span>
@@ -32,17 +31,41 @@ const VideoCard: React.FC<{ type: string }> = ({ type }) => (
 
 const Videos: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState('All Courses');
-  const [videoItems, setVideoItems] = useState<number[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const videosPerPage = 12; // Number of videos per page
 
-  // Generate random number of videos between 35 and 50
-  useEffect(() => {
-    const randomCount = Math.floor(Math.random() * 16) + 35;
-    setVideoItems(Array.from({ length: randomCount }, (_, i) => i + 1));
-  }, [selectedTab]);
+  // Arrays for images and titles
+  const videoImages = [
+    '/storylib1.svg',
+    '/storylib2.svg',
+    '/storylib3.svg',
+    '/storylib4.svg',
+    '/storylib5.svg',
+    '/storylib6.svg',
+    '/storylib7.svg',
+    '/storylib8.svg',
+    '/storylib9.svg',
+    '/storylib10.svg',
+    '/storylib11.svg',
+    '/storylib12.svg',
+  ];
 
-  const totalPages = Math.ceil(videoItems.length / videosPerPage);
+  const videoTitles = [
+    "حالة الطقس لهذا اليوم يا جدي",
+    "كوزي",
+    "سندراني غواصة الاعماق",
+    "البطتان و الثعلب",
+    "الجميلة و الوحش",
+    "انا ممتنة",
+    "بيت ستي",
+    "من يساعد الدجاجة",
+    "لا تقلق يا بابا",
+    "انا مدهشة",
+    "اختي الصغيرة",
+    "اشارك ألعابي"
+  ];
+
+  const totalPages = Math.ceil(videoImages.length / videosPerPage);
 
   const handlePrevPage = () => {
     setCurrentPage((prev) => (prev > 1 ? prev - 1 : totalPages));
@@ -53,7 +76,13 @@ const Videos: React.FC = () => {
   };
 
   // Get videos for current page
-  const currentVideos = videoItems.slice(
+  const currentVideos = videoImages.slice(
+    (currentPage - 1) * videosPerPage,
+    currentPage * videosPerPage
+  );
+
+  // Get titles for current page
+  const currentTitles = videoTitles.slice(
     (currentPage - 1) * videosPerPage,
     currentPage * videosPerPage
   );
@@ -72,9 +101,8 @@ const Videos: React.FC = () => {
               setSelectedTab(tab);
               setCurrentPage(1); // Reset to first page when tab changes
             }}
-            className={`text-lg font-semibold ${
-              selectedTab === tab ? 'text-[#FE207D] border-b-2 border-[#3DCBB1]' : 'text-black'
-            } pb-2`}
+            className={`text-lg font-semibold ${selectedTab === tab ? 'text-[#FE207D] border-b-2 border-[#3DCBB1]' : 'text-black'
+              } pb-2`}
           >
             {tab}
           </button>
@@ -83,8 +111,8 @@ const Videos: React.FC = () => {
 
       {/* Video Grid */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full px-4">
-        {currentVideos.map((_, index) => (
-          <VideoCard key={index} type={selectedTab} />
+        {currentVideos.map((image, index) => (
+          <VideoCard key={index} type={selectedTab} coverImage={image} title={currentTitles[index]} />
         ))}
       </div>
 
@@ -100,9 +128,8 @@ const Videos: React.FC = () => {
           {Array.from({ length: totalPages }, (_, i) => (
             <div
               key={i}
-              className={`w-3 h-3 rounded-full ${
-                currentPage === i + 1 ? 'bg-[#FE207D]' : 'bg-gray-300'
-              }`}
+              className={`w-3 h-3 rounded-full ${currentPage === i + 1 ? 'bg-[#FE207D]' : 'bg-gray-300'
+                }`}
             ></div>
           ))}
         </div>
@@ -111,7 +138,7 @@ const Videos: React.FC = () => {
         <button onClick={handleNextPage}>
           <img src="/arrow-circle-broken-right.svg" alt="Next" className="w-6 h-6" />
         </button>
-      </div>  
+      </div>
     </div>
   );
 };

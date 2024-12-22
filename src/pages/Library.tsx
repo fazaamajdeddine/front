@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import CategoryCard from '../components/CategoryCard';
 import { getCategoryColor, Preferences } from '../helpers/helpers';
+import StoryCard from '../components/StoryCard'; // Import the StoryCard component
 
 const Library: React.FC = () => {
-    const [currentSlide, setCurrentSlide] = useState(0); // State to track the current slide index
     const [categories, setCategories] = useState<
         { name: keyof typeof Preferences; color: string }[] | null
     >(null);
@@ -16,6 +16,49 @@ const Library: React.FC = () => {
         setCategories(categoryData);
     }, []);
 
+    // Arrays for images
+    const storyImages = [
+        '/storylib1.svg',
+        '/storylib2.svg',
+        '/storylib3.svg',
+        '/storylib4.svg',
+    ];
+
+    const libraryImages = [
+        '/storylib1.svg',
+        '/storylib2.svg',
+        '/storylib3.svg',
+        '/storylib4.svg',
+        '/storylib5.svg',
+        '/storylib6.svg',
+        '/storylib7.svg',
+        '/storylib8.svg',
+        '/storylib9.svg',
+        '/storylib10.svg',
+        '/storylib11.svg',
+        '/storylib12.svg',
+    ];
+
+    // Titles for the library stories
+    const libraryTitles = [
+        "حالة الطقس لهذا اليوم يا جدي",
+        "كوزي",
+        "سندراني غواصة الاعماق",
+        "البطتان و الثعلب",
+        "الجميلة و الوحش",
+        "انا ممتنة",
+        "بيت ستي",
+        "من يساعد الدجاجة",
+        "لا تقلق يا بابا",
+        "انا مدهشة",
+        "اختي الصغيرة",
+        "اشارك ألعابي"
+    ];
+
+    const handleStoryClick = (index: number) => {
+        console.log(`Story ${index + 1} clicked!`);
+    };
+
     return (
         <div className="mx-0"> {/* Remove default container padding */}
 
@@ -23,30 +66,23 @@ const Library: React.FC = () => {
                 <h3 className="text-[16px] font-semibold text-[#FF1276]">Trending Stories</h3>
                 <h3 className="text-[36px] font-bold text-black">Popular Stories</h3>
 
-                <p className="m  const [currentSlide, setCurrentSlide] = useState(0); // State to track the current slide index
-t-4 text-lg text-gray-600 leading-relaxed max-w-lg">
+                <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg">
                     Timeless tales that spark imagination and adventure...
                 </p>
-
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-20 mt-6">
-                {Array.from({ length: 4 }).map((_, index) => (
-                    <div
-                        className="relative w-[289px] h-[352px] bg-[#F7EFCC] border border-[#C7C7C7] rounded-lg flex items-center justify-center cursor-pointer"
-                    //onClick={onClick} 
-                    >
-                        {/* Use the coverImage prop for the image source */}
-                        <img
-                            src="/story.svg"
-                            alt="Story Icon"
-                            className="absolute top-1/2 transform -translate-y-1/2 w-auto h-auto"
-                        />
 
-                        {/* Bottom container */}
-                        <div className="absolute bottom-0 w-full h-[96px] bg-[#FBA628] rounded-b-lg border-t border-[#C7C7C7]" />
-                    </div>
+            {/* First Grid for Trending Stories */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-20 mt-6">
+                {storyImages.map((image, index) => (
+                    <StoryCard
+                        key={index}
+                        onClick={() => handleStoryClick(index)}
+                        coverImage={image}
+                        title={libraryTitles[index]} // Use the title from the array
+                    />
                 ))}
             </div>
+
             {/* Categories Section */}
             <div className="py-10">
                 <h1 className="text-center text-2xl mb-6">Categories</h1>
@@ -57,26 +93,19 @@ t-4 text-lg text-gray-600 leading-relaxed max-w-lg">
                 </div>
             </div>
 
+            {/* Second Grid for Library Stories */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 px-20 mt-6">
-                {Array.from({ length: 12 }).map((_, index) => (
-                    <div
-                        className="relative w-[289px] h-[352px] bg-[#F7EFCC] border border-[#C7C7C7] rounded-lg flex items-center justify-center cursor-pointer"
-                    // onClick={onClick} 
-                    >
-                        {/* Use the coverImage prop for the image source */}
-                        <img
-                            src="/story.svg"
-                            alt="Story Icon"
-                            className="absolute top-1/2 transform -translate-y-1/2 w-auto h-auto"
-                        />
-
-                        {/* Bottom container */}
-                        <div className="absolute bottom-0 w-full h-[96px] bg-[#FBA628] rounded-b-lg border-t border-[#C7C7C7]" />
-                    </div>
+                {libraryImages.map((image, index) => (
+                    <StoryCard
+                        key={index}
+                        onClick={() => handleStoryClick(index)}
+                        coverImage={image}
+                        title={libraryTitles[index]} // Use the title from the array
+                    />
                 ))}
             </div>
-            <hr className="my-8 border-t border-gray-300" />
 
+            <hr className="my-8 border-t border-gray-300" />
         </div>
     );
 };

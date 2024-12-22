@@ -1,11 +1,11 @@
 import { useNavigate } from "react-router-dom"; // Import useNavigate
 import { KidResponse } from "../interfaces";
-import { Preferences, getCategoryColor } from "../helpers/helpers"; // Import Preferences and helper function
+import {  getCategoryColor } from "../helpers/helpers"; // Import Preferences and helper function
 
 export const Kid = ({
   kid,
   onSelect,
-  isSelected,
+ // isSelected,
 }: {
   kid: KidResponse;
   onSelect: (kid: KidResponse) => void;
@@ -46,7 +46,7 @@ export const Kid = ({
                 className="px-2 py-1 text-xs rounded-full" // Smaller size
                 style={{
                   backgroundColor: getCategoryColor(preference),
-                  color: "#FFFFFF", // White text
+                  color: "#000000", // White text
                 }}
               >
                 {preference}

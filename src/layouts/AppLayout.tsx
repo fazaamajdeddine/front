@@ -1,5 +1,4 @@
 // src/layouts/AppLayout.tsx
-import React from "react";
 import Navbar from "../components/AppNavbar";
 import Footer from "../components/AppFooter";
 import { Outlet } from "react-router-dom"; // Used to render nested routes

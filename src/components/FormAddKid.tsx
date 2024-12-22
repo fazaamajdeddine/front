@@ -10,7 +10,6 @@ import { useAuthStore } from "../stores/auth/auth.store";
 export const FormAddKid = () => {
   const createKid = useKidsStore((state) => state.createKid);
   const navigate = useNavigate();
-  const { user } = useAuthStore((state) => state);
 
   const [formData, setFormData] = useState<KidResponse>({
     _id: "",
@@ -47,7 +46,7 @@ export const FormAddKid = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { name, dateOfBirth, gender, preferences } = formData;
+    const { name, dateOfBirth, gender } = formData;
 
     if (!name || !dateOfBirth || !gender) {
       return toast.error("All fields are mandatory!");
