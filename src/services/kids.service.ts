@@ -15,7 +15,7 @@ export class KidService {
 
             const kidsSnapshot = await getDocs(q);
 
-            return kidsSnapshot.docs.map(doc => ({ _id: doc.id, ...doc.data() } as KidResponse));
+            return kidsSnapshot.docs.map(doc => ({ zid: doc.id, ...doc.data() } as KidResponse));
 
         } catch (error: unknown) {
 
@@ -31,7 +31,7 @@ export class KidService {
             const kidDoc = doc(db, "kids", id);
             const kidSnapshot = await getDoc(kidDoc);
             if (kidSnapshot.exists()) {
-                return { _id: kidSnapshot.id, ...kidSnapshot.data() } as KidResponse;
+                return { zid: kidSnapshot.id, ...kidSnapshot.data() } as KidResponse;
             } else {
                 throw new Error("Kid not found");
             }

@@ -74,12 +74,12 @@ const storeApi: StateCreator<KidsState> = (set) => ({
     }
   },
 
-   // Delete a kid by ID
-   deleteKid: async (id: string) => {
+  // Delete a kid by ID
+  deleteKid: async (id: string) => {
     try {
       await KidService.deleteKid(id);
       set((state) => ({
-        kids: state.kids.filter((kid) => kid._id !== id),
+        kids: state.kids.filter((kid) => kid.zid !== id),
       }));
       toast.success("Kid deleted successfully!");
     } catch (error) {
@@ -93,7 +93,7 @@ const storeApi: StateCreator<KidsState> = (set) => ({
     try {
       const res = await KidService.updateKid(id, kid);
       set((state) => ({
-        kids: state.kids.map((k) => (k._id === id ? res : k)),
+        kids: state.kids.map((k) => (k.zid === id ? res : k)),
         kid: res,
       }));
       toast.success("Kid updated successfully!");

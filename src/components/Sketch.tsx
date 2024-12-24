@@ -15,8 +15,19 @@ interface Character {
 const TOTAL_SCENES = 5;
 const POINTS_PER_SCENE = 20;
 
+// Define a type for the scene keys
+type SceneKey = 1 | 2 | 3 | 4 | 5;
+
+const SCENE_TEXTS: Record<SceneKey, string> = {
+  1: "تشكّيات الحرفاء أصبحت تهدّد تجارتي... يجب أن أجد حلّا لهذه المشكلة دون أن أستعمل دواء. الدواء قد يضرّ بالمنتوجات ويؤثر ذلك سلبيا على صحة الحرفاء. ... (تتأمّل) أظنني وجدت الحلّ (تغلق باب الدكان من الخارج وتمشي في الشارع الطويل الذي يحوي بعض الدكاكين وبعض العربات التي تبيع الخضر، وهناك اشخاص يظهرون في الشارع...)",
+  2: "(الباب في منزل امي سيسي يطرق، القط بوبي نائم على حشيّة وراء الباب، يرفع رأسه منزعجا ويطلق مواء لتنبيه صاحبة البيت) (في سقيفة المنزل، تقف امي سيسي والأم خيرة متقابلتين)",
+  3: "(تسير أمي سيسي في الطريق المؤدّية لدكان الأم خيرة وهي تحمل قفّة يطلّ منها رأس بوبي القط وعلامات الحيرة بادية على وجهه، بينما تسير عبر الشارع الضيق والمبلط بالأحجار. ترى الأطفال يلعبون في الحديقة والشمس تميل نحو الغروب...)",
+  4: "الأم خيرة: • شكرًا لك، أمي سيسي! بوبي، أرحب بك في الدكان! أتمنى أن يكون لدينا وقت ممتع سويًا.",
+  5: "مشهد ختامي: بوبي يقف على رف في الدكان، والأطفال يضحكون وهم يشترون من دكان الأم خيرة. أمي سيسي تبتسم بينما تعود أدراجها إلى منزلها."
+};
+
 const Sketch: React.FC = () => {
-  const [currentScene, setCurrentScene] = useState(1);
+  const [currentScene, setCurrentScene] = useState<SceneKey>(1);
   const [characters, setCharacters] = useState<Character[]>(getSceneCharacters(1));
   const [draggedCharacter, setDraggedCharacter] = useState<number | null>(null);
   const [highlightedZone, setHighlightedZone] = useState<number | null>(null);
@@ -26,7 +37,7 @@ const Sketch: React.FC = () => {
   const [progress, setProgress] = useState(0);
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
-  function getSceneCharacters(scene: number): Character[] {
+  function getSceneCharacters(scene: SceneKey): Character[] {
     switch (scene) {
       case 1:
         return [
@@ -44,7 +55,9 @@ const Sketch: React.FC = () => {
       case 4:
         return [
           { id: 1, name: "شخصية 1", image: "/charachter1scene4.png", targetX: 1000, targetY: 1275, width: 80, height: 80 },
-          { id: 2, name: "شخصية 2", image: "/charachter2scene4.png", targetX: 1375, targetY: 900, width: 160, height: 160 },
+          {
+            id: 2, name: "شخصية 2", image: "/charachter2scene4.png", targetX: 1375, targetY: 900, width: 160, height: 160
+          },
           { id: 3, name: "شخصية 3", image: "/charachter3scene4.png", targetX: 1125, targetY: 850, width: 140, height: 220 },
         ];
       case 5:
@@ -114,10 +127,11 @@ const Sketch: React.FC = () => {
 
   const handleNextScene = () => {
     if (currentScene < TOTAL_SCENES) {
-      setCurrentScene((prev) => prev + 1);
-      setCharacters(getSceneCharacters(currentScene + 1));
+      const nextScene = currentScene + 1 as SceneKey; // Cast to SceneKey
+      setCurrentScene(nextScene);
+      setCharacters(getSceneCharacters(nextScene));
       setPlacedCharacters([]);
-      setBackgroundImage(`/scene${currentScene + 1}fergha.svg`);
+      setBackgroundImage(`/scene${nextScene}fergha.svg`);
       setClickCount(0);
       setProgress((prev) => prev + POINTS_PER_SCENE);
     } else if (progress === 80) {
@@ -126,27 +140,24 @@ const Sketch: React.FC = () => {
   };
 
   return (
-
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
-      <div className="relative flex items-center justify-center w-[700px] h-[500px] border border-gray-300">
-        {/* Progress Bar */}
-        <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 w-[150px] h-4 bg-gray-300 rounded-full overflow-hidden">
-          <div
-            className="h-full bg-[#75B936] opacity-80 transition-all duration-500"
-            style={{ width: `${progress}%` }}
-          ></div>
-        </div>
-
-        {/* Game Area */}
+    <div className="flex flex-col items-center">
+      <div className="relative flex items-center justify-center w-[700px] h-[500px] border border-[#A6AD84] rounded-[32px] border-[10px]">
         <div
           className="w-full h-full relative"
           style={{
             backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: "contain", // Makes the background cover the entire area
-            backgroundRepeat: "no-repeat", // Prevents repeating
-            backgroundPosition: "center", // Centers the background image
+            backgroundSize: "contain",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "center",
           }}
         >
+          {/* Progress Bar */}
+          <div className="absolute top-4 left-1/2 transform -translate-x-1/2 w-[150px] h-4 bg-gray-300 rounded-full overflow-hidden">
+            <div
+              className="h-full bg-[#75B936] opacity-80 transition-all duration-500"
+              style={{ width: `${progress}%` }}
+            ></div>
+          </div>
 
           {/* Drop Zones */}
           {characters.map((char) => (
@@ -227,8 +238,12 @@ const Sketch: React.FC = () => {
 
         {showSuccessPopup && <GameSuccessPopup onClose={() => setShowSuccessPopup(false)} />}
       </div>
-    </div>
 
+      {/* Scene Text Container */}
+      <div className="mt-4 w-[700px] bg-white p-4 rounded-lg border border-[#F9A293] shadow-lg text-right">
+        <p>{SCENE_TEXTS[currentScene]}</p>
+      </div>
+    </div>
   );
 };
 

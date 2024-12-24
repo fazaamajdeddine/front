@@ -2,7 +2,7 @@
 import { Preferences } from "../helpers/helpers"; // Import Preferences enum
 
 export interface KidResponse {
-  _id: string;                    // Matches the MongoDB ObjectId
+  zid: string;                    // Matches the MongoDB ObjectId
   name: string;                  // Kid's name
   dateOfBirth: string;           // Kid's date of birth (ISO string if serialized)
   parentId?: string;             // Optional parent ID

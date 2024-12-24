@@ -74,7 +74,7 @@ const Navbar: React.FC = () => {
                 className="flex items-center bg-[#FE207D] text-white rounded-md px-3 py-2"
               >
                 <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
-                Logout
+                
               </button>
             </div>
           )}

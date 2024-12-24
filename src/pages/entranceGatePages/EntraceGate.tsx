@@ -1,4 +1,4 @@
-import  { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useKidsStore } from "../../stores/kids/kids.store"; // Zustand store
 import { useAuthStore } from "../../stores"; // Zustand store for auth
@@ -11,7 +11,7 @@ export const EntranceGate = () => {
     const getAllKids = useKidsStore((state) => state.getAllKids);
     const deleteKid = useKidsStore((state) => state.deleteKid);
     const kids = useKidsStore((state) => state.kids);
-    const logout = useAuthStore((state) => state.logoutUser ); // Access logout function
+    const logout = useAuthStore((state) => state.logoutUser); // Access logout function
 
     const [selectedKid, setSelectedKid] = useState<any>(null);
     const [isLanguageOpen, setIsLanguageOpen] = useState(false);
@@ -61,11 +61,11 @@ export const EntranceGate = () => {
                         </div>
                     ) : (
                         kids.map((kid) => (
-                            <div key={kid._id} className="flex items-center gap-4 w-full justify-center">
+                            <div key={kid.zid} className="flex items-center gap-4 w-full justify-center">
                                 <Kid
                                     kid={kid}
                                     onSelect={setSelectedKid}
-                                    isSelected={selectedKid?._id === kid._id} // Check if the kid is selected
+                                    isSelected={selectedKid?._id === kid.zid} // Check if the kid is selected
                                 />
 
                                 {/* Button Container */}
@@ -74,7 +74,7 @@ export const EntranceGate = () => {
                                     <button
                                         onClick={(e) => {
                                             e.stopPropagation(); // Prevent click from selecting the kid
-                                            console.log(`Editing kid: ${kid.name}`);
+                                            console.log(`Editing kid: ${kid.zid}`);
                                         }}
                                         className="w-[175px] h-[35px] px-4 py-2 text-sm font-semibold rounded-md"
                                         style={{
@@ -90,7 +90,9 @@ export const EntranceGate = () => {
                                     <button
                                         onClick={(e) => {
                                             e.stopPropagation(); // Prevent click from selecting the kid
-                                            deleteKid(kid._id);
+                                            console.log(`Deleting kid with ID: ${kid.zid}`);
+                                            deleteKid(kid.zid);
+
                                         }}
                                         className="w-[175px] h-[35px] px-4 py-2 text-sm font-semibold rounded-md"
                                         style={{
@@ -129,7 +131,7 @@ export const EntranceGate = () => {
                     className="px-4 py-2 rounded-md shadow hover:bg-opacity-80 transition"
                     style={{
                         backgroundColor: "#FE207D",
-                        color: "#000000",
+                        color: "#ffffff",
                     }}
                 >
                     Logout

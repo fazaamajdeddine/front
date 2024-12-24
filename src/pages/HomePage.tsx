@@ -71,8 +71,8 @@ export const HomePage = () => {
             {/* Main Content */}
             <h3 className="text-[32px] font-bold text-[#FBA628] pt-6">READ AND PLAY</h3>
             <p className="mt-4 text-lg text-gray-600 leading-relaxed max-w-lg">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam vitae
-              justo ac sapien cursus viverra nec at enim.
+              Read, Play, Explor Adventure Awaits Behind Every Page !
+              Turn the Page, Take the Stag Imagination is Your Superpower!
             </p>
             <button className="mt-8 text-[18px] font-bold text-white bg-[#FBA628] rounded-md px-8 py-4 h-[60] w-[189]">
               Explore
@@ -128,10 +128,9 @@ export const HomePage = () => {
       <hr className="custom-divider" />
       {/* Radio Player Button */}
 
-      <RadioPlayer />
 
       {/* Floating Button to Scroll to Top */}
-    
+
     </div>
   );
 };
