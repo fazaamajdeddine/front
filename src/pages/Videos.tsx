@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const Tabs = ['All Courses', 'Courses', 'Wishlist', 'Completed'];
+const Tabs = ['All videos', 'videos', 'Wishlist', 'Completed'];
 
 // VideoCard component
 const VideoCard: React.FC<{ type: string; coverImage: string; title: string }> = ({ type, coverImage, title }) => (

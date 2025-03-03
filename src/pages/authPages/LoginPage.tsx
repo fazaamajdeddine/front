@@ -79,7 +79,7 @@ export const LoginPage = () => {
           </Link>
           <button
             type="submit"
-            className="w-full mt-6 px-4 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-400 text-white font-semibold"
+            className="w-full mt-6 px-4 py-3 rounded-lg bg-[#FF1276] hover:bg-[#FF1276] text-white font-semibold"
           >
             Login
           </button>

@@ -4,7 +4,6 @@ import { Preferences, getCategoryColor } from "../helpers/helpers";
 import { Loader } from "../components/Loader";
 import CategoryCard from "../components/CategoryCard";
 import StoryCard from "../components/StoryCard";
-import RadioPlayer from "../components/RadioPlayer";
 
 export const HomePage = () => {
   const [categories, setCategories] = useState<

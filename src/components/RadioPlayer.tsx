@@ -33,8 +33,7 @@ const RadioPlayer: React.FC = () => {
         <iframe
           width="200"
           height="100"
-          src="https://www.youtube.com/embed/videoseries?list=PLqqdL3FTtSnCeBRyHMO9rjHLDeM_eZH-y&autoplay=1"
-          title="YouTube Playlist"
+          src="https://www.youtube.com/embed/videoseries?list=PLqqdL3FTtSnCeBRyHMO9rjHLDeM_eZH-y&autoplay=1" title="YouTube Playlist"
           frameBorder="0"
           allow="autoplay; encrypted-media"
           allowFullScreen

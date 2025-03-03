@@ -12,7 +12,7 @@ export const FormAddKid = () => {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState<KidResponse>({
-    _id: "",
+    zid: "",
     name: "",
     dateOfBirth: "",
     preferences: [],

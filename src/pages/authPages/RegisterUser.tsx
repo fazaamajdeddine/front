@@ -157,7 +157,7 @@ export const RegisterUser = ()  => {
 
           <button
             type="submit"
-            className="w-full bg-indigo-500 hover:bg-indigo-400 text-white font-semibold rounded-lg px-4 py-3"
+            className="w-full bg-[#FF1276] hover:bg-[#FF1276] text-white font-semibold rounded-lg px-4 py-3"
           >
             Register
           </button>

@@ -2,6 +2,11 @@
 import React from 'react';
 
 const Contact: React.FC = () => {
+  const handleButtonClick = () => {
+    // Replace with your actual YouTube URL
+    window.location.href = 'https://www.youtube.com/watch?v=2497yfJevkc';
+  };
+
   return (
     <section className="">
       <div className="py-8 lg:py-16 px-4 mx-auto max-w-screen-md">
@@ -57,7 +62,8 @@ const Contact: React.FC = () => {
             ></textarea>
           </div>
           <button
-            type="submit"
+            type="button" // Change to type="button"
+            onClick={handleButtonClick} // Add onClick handler
             className="mt-8 text-[18px] font-bold text-white bg-[#FBA628] rounded-md px-8 py-4 h-[60] w-[189]"
           >
             Send message

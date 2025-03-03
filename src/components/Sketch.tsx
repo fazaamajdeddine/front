@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Sketch.css";
 import GameSuccessPopup from "./GameSuccessPopup"; // Adjust the path as necessary
+import { useNavigate } from "react-router";
 
 interface Character {
   id: number;
@@ -112,6 +113,7 @@ const Sketch: React.FC = () => {
     event.preventDefault();
     setHighlightedZone(id);
   };
+  const history = useNavigate(); // Initialize useHistory
 
   const toggleGuide = () => {
     setClickCount((prev) => prev + 1);
@@ -124,7 +126,9 @@ const Sketch: React.FC = () => {
       }, 1000);
     }
   };
-
+  const handleExitClick = () => {
+    history("/"); // Navigate to the home page
+  };
   const handleNextScene = () => {
     if (currentScene < TOTAL_SCENES) {
       const nextScene = currentScene + 1 as SceneKey; // Cast to SceneKey
@@ -134,13 +138,31 @@ const Sketch: React.FC = () => {
       setBackgroundImage(`/scene${nextScene}fergha.svg`);
       setClickCount(0);
       setProgress((prev) => prev + POINTS_PER_SCENE);
-    } else if (progress === 80) {
+    } else if (currentScene === TOTAL_SCENES && placedCharacters.length === characters.length) {
       setShowSuccessPopup(true);
+    }
+  };
+
+  const handlePreviousScene = () => {
+    if (currentScene > 1) {
+      const previousScene = currentScene - 1 as SceneKey; // Cast to SceneKey
+      setCurrentScene(previousScene);
+      setCharacters(getSceneCharacters(previousScene));
+      setPlacedCharacters([]);
+      setBackgroundImage(`/scene${previousScene}fergha.svg`);
+      setClickCount(0);
     }
   };
 
   return (
     <div className="flex flex-col items-center">
+      {/* Exit Button */}
+      <button
+        className="absolute top-4 right-4 px-4 py-2 text-white font-bold bg-red-500 rounded-full transition duration-200 hover:bg-red-600"
+        onClick={handleExitClick} // Navigate to home page
+      >
+        خروج
+      </button>
       <div className="relative flex items-center justify-center w-[700px] h-[500px] border border-[#A6AD84] rounded-[32px] border-[10px]">
         <div
           className="w-full h-full relative"
@@ -226,15 +248,25 @@ const Sketch: React.FC = () => {
           />
         </div>
 
-        {/* Button */}
-        {placedCharacters.length === characters.length && (
-          <button
-            className="absolute bottom-5 left-1/2 transform -translate-x-1/2 px-4 py-2 bg-green-500 text-white rounded-lg shadow-md transition-all hover:bg-green-600 focus:outline-none"
-            onClick={handleNextScene}
-          >
-            {currentScene === TOTAL_SCENES ? "انهاء" : "التالي"}
-          </button>
-        )}
+        {/* Buttons */}
+        <div className="absolute bottom-5 left-1/2 transform -translate-x-1/2 flex space-x-4">
+          {currentScene > 1 && (
+            <button
+              className="px-4 py-2 bg-blue-500 text-white rounded-lg shadow-md transition-all hover:bg-blue-600 focus:outline-none"
+              onClick={handlePreviousScene}
+            >
+              السابق
+            </button>
+          )}
+          {placedCharacters.length === characters.length && (
+            <button
+              className="px-4 py-2 bg-green-500 text-white rounded-lg shadow-md transition-all hover:bg-green-600 focus:outline-none"
+              onClick={handleNextScene}
+            >
+              {currentScene === TOTAL_SCENES ? "انهاء" : "التالي"}
+            </button>
+          )}
+        </div>
 
         {showSuccessPopup && <GameSuccessPopup onClose={() => setShowSuccessPopup(false)} />}
       </div>
