@@ -53,6 +53,10 @@ const Book = (props: any) => {
     "/bubi6.svg",
     "/bubi7.svg",
     "/bubi8.svg",
+    "/bubi9.svg",
+    "/bubi10.svg",
+    "/bubi11.svg",
+
   ];
 
   const handleFlip = (index: number) => {
@@ -69,14 +73,14 @@ const Book = (props: any) => {
   const handleStartGame = () => {
     setShowLandingPage(true); // Show the landing page (which will show the game when Play is clicked)
   };
-  
+
 
   const handleExit = () => {
     window.close(); // Close the window
   };
 
   if (showLandingPage) {
-    return <LandingPage  />; // Show the game when Play button is clicked
+    return <LandingPage />; // Show the game when Play button is clicked
   }
 
   if (showLastPageStory) {

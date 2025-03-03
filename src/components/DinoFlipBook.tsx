@@ -52,6 +52,8 @@ const DinoBook = (props: any) => {
     "/dino4.svg",
     "/dino5.svg",
     "/dino6.svg",
+    "/dino7.svg",
+    "/dino8.svg",
   ];
 
   const handleFlip = (index: number) => {
@@ -68,14 +70,14 @@ const DinoBook = (props: any) => {
   const handleStartGame = () => {
     setShowLandingPage(true); // Show the landing page (which will show the game when Play is clicked)
   };
-  
+
 
   const handleExit = () => {
     window.close(); // Close the window
   };
 
   if (showLandingPage) {
-    return <LandingPage  />; // Show the game when Play button is clicked
+    return <LandingPage />; // Show the game when Play button is clicked
   }
 
   if (showLastPageStory) {
