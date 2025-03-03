@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom"; // Import useHistory for navigation
 import Sketch from "./Sketch";
 import DinoSketch from "./DinoSketch";
 
@@ -13,13 +13,16 @@ const LandingPage: React.FC = () => {
 
     const isDinoRoute = location.pathname === "/story/story-1";
 
+
     if (showSketch) {
         // Render Sketch or DinoSketch fullscreen
         return isDinoRoute ? <DinoSketch /> : <Sketch />;
     }
 
     return (
-        <div className="w-full h-screen flex justify-center items-center">
+        <div className="w-full h-screen flex justify-center items-center relative">
+
+
             {/* Main Container */}
             <div
                 className={`relative rounded-[64px] transition-all duration-300 border-8 border-[#F9A293]`}

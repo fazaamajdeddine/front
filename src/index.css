@@ -30,3 +30,20 @@ body {
 }
 
 
+/* Add this to your CSS file */
+
+.custom-divider {
+
+  border: none; /* Remove default border */
+
+  border-top: 3px dashed #FF1276; /* Set the dash size and color */
+
+  height: 0; /* Set height to 0 to avoid extra space */
+
+  margin: 1rem 0; /* Adjust margin for spacing */
+
+  padding: 0; /* Remove padding */
+
+  background: transparent; /* Ensure background is transparent */
+
+}

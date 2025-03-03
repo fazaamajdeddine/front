@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronDown, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faChevronDown, faSearch, faSignOutAlt } from '@fortawesome/free-solid-svg-icons'; // Import the logout icon
+import { useAuthStore } from "../stores";
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const [isLanguageDropdownOpen, setLanguageDropdownOpen] = useState(false);
   const [activeLink, setActiveLink] = useState(location.pathname);
+  const navigate = useNavigate(); // Initialize the navigate function
+  const authStatus = useAuthStore((state) => state.status);
+
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -41,13 +46,38 @@ const Navbar: React.FC = () => {
               <span className={`${activeLink === link.path ? 'absolute inset-0 rounded-lg shadow-[0px 1px 4px rgba(251, 166, 40, 0.5)] pointer-events-none' : ''}`} />
               {link.name}
             </Link>
-
-
-
-
           ))}
 
           <div className="flex-1" />
+          {/* Conditional Rendering for Login/Signup or Kid's Name and Avatar */}
+          {authStatus === "unauthorized" ? (
+            <>
+              <Link
+                to="/auth" // Navigate to the login page
+                className="mr-2 px-3 py-2 text-black rounded-md text-sm border border-[#FBA628]"
+              >
+                Login
+              </Link>
+
+              <Link
+                to="/auth/register" // Navigate to the register page
+                className="flex items-center justify-center bg-[#FBA628] text-white rounded-[8px] text-[16px] font-medium"
+                style={{ width: '94px', height: '44px' }}
+              >
+                Sign Up
+              </Link>
+            </>
+          ) : (
+            <div className="flex items-center">
+              <button
+                onClick={() => navigate("/entranceGate")} // Navigate to the entrance gate
+                className="flex items-center bg-[#FE207D] text-white rounded-md px-3 py-2"
+              >
+                <FontAwesomeIcon icon={faSignOutAlt} className="mr-2" />
+                
+              </button>
+            </div>
+          )}
 
           {/* Language Dropdown */}
           <div className="relative mr-4">
@@ -75,23 +105,6 @@ const Navbar: React.FC = () => {
               </div>
             )}
           </div>
-
-          {/* Login and Sign Up Buttons */}
-          <Link
-            to="/login"
-            className="mr-2 px-3 py-2 text-black rounded-md text-sm border border-[#FBA628]"
-          >
-            Login
-          </Link>
-
-          <Link
-            to="/register"
-            className="flex items-center justify-center bg-[#FBA628] text-white rounded-[8px] text-[16px] font-medium"
-            style={{ width: '94px', height: '44px' }}
-          >
-            Sign Up
-          </Link>
-
         </nav>
 
         {/* Search Bar */}
@@ -115,7 +128,7 @@ const Navbar: React.FC = () => {
             <input
               type="text"
               placeholder="Search..."
-              className=" h-[40px] w-[821px] px-4 rounded-full bg-white"
+              className="h-[40px] w-[821px] px-4 rounded-full bg-white"
               style={{ borderRadius: '8px' }}
             />
           </div>

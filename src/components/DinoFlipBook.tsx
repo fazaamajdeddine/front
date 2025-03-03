@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
 import HTMLFlipBook from "react-pageflip";
 import LandingPage from "./LandingPage"; // Import the LandingPage component
 import "./Book.css";
@@ -40,7 +40,7 @@ const LastPageStory = ({ onStartGame, onExit }: { onStartGame: () => void; onExi
 
 const DinoBook = (props: any) => {
   const bookRef = useRef<any>();
-  const [editModeOn, setEditModeOn] = useState<boolean>(false);
+  const [editModeOn, ] = useState<boolean>(false);
   const [showLandingPage, setShowLandingPage] = useState<boolean>(false);
   const [showLastPageStory, setShowLastPageStory] = useState<boolean>(false); // Show the last page story
 

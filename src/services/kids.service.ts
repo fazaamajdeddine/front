@@ -1,79 +1,85 @@
-import { AxiosError } from "axios";
-import { configApi } from "../api/configApi"; // Use the `kidsApi` instance
+// src/services/kids.service.ts
+import { db } from "../api/firebaseConfig";
+import { collection, getDocs, doc, setDoc, deleteDoc, getDoc, query, where } from "firebase/firestore";
 import { KidResponse } from "../interfaces";
 
 export class KidService {
-  static getAllKids = async (): Promise<KidResponse[]> => {
-    try {
-      const { data } = await configApi.get<{ status: number; message: string; data: KidResponse[] }>("/kids/get-kids");
-      console.log(data);
-      return data.data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        console.log("🐞🐞🐞🐞🐞🐞🐞🐞🐞", error.response?.data);
-        throw new Error(error.response?.data);
-      }
-      console.log(error);
-      throw new Error("Error fetching kids");
-    }
-  };
+    // Get all kids
+    static getAllKids = async (userId: string): Promise<KidResponse[]> => {
 
-  static getKid = async (id: string): Promise<KidResponse> => {
-    try {
-      const { data } = await configApi.get<KidResponse>(`/kids/kids/${id}`);
-      return data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        console.error(error.response?.data);
-        throw new Error(error.response?.data.message || "Error fetching kid");
-      }
-      console.error(error);
-      throw new Error("Error fetching kid");
-    }
-  };
+        try {
 
-  static createKid = async (kid: Partial<KidResponse>): Promise<KidResponse> => {
-    try {
-      const { data } = await configApi.post<KidResponse>("/kids/add", kid);
-      console.log(data);
-      return data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        console.error(error.response?.data);
-        throw new Error(error.response?.data.message || "Error creating kid");
-      }
-      console.error(error);
-      throw new Error("Error creating kid");
-    }
-  };
+            const kidsCollection = collection(db, "kids");
 
-  static updateKid = async (
-    id: string,
-    kid: Partial<KidResponse>
-  ): Promise<KidResponse> => {
-    try {
-      const { data } = await configApi.put<KidResponse>(`/kids/update/${id}`, kid);
-      return data;
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        console.error(error.response?.data);
-        throw new Error(error.response?.data.message || "Error updating kid");
-      }
-      console.error(error);
-      throw new Error("Error updating kid");
-    }
-  };
+            const q = query(kidsCollection, where("parentId", "==", userId)); // Filter by parentId
 
-  static deleteKid = async (id: string): Promise<void> => {
-    try {
-      await configApi.delete(`/kids/delete/${id}`);
-    } catch (error) {
-      if (error instanceof AxiosError) {
-        console.error(error.response?.data);
-        throw new Error(error.response?.data.message || "Error deleting kid");
-      }
-      console.error(error);
-      throw new Error("Error deleting kid");
-    }
-  };
+            const kidsSnapshot = await getDocs(q);
+
+            return kidsSnapshot.docs.map(doc => ({ zid: doc.id, ...doc.data() } as KidResponse));
+
+        } catch (error: unknown) {
+
+            throw new Error("Failed to fetch kids: " + (error instanceof Error ? error.message : "Unknown error"));
+
+        }
+
+    };
+
+    // Get a single kid by ID
+    static getKid = async (id: string): Promise<KidResponse> => {
+        try {
+            const kidDoc = doc(db, "kids", id);
+            const kidSnapshot = await getDoc(kidDoc);
+            if (kidSnapshot.exists()) {
+                return { zid: kidSnapshot.id, ...kidSnapshot.data() } as KidResponse;
+            } else {
+                throw new Error("Kid not found");
+            }
+        } catch (error: unknown) {
+            throw new Error("Failed to fetch kid: " + (error instanceof Error ? error.message : "Unknown error"));
+        }
+    };
+
+    // Create a new kid
+    static createKid = async (kid: Partial<KidResponse>): Promise<KidResponse> => {
+        try {
+            // Validate required fields
+            if (!kid.name || !kid.dateOfBirth || !kid.gender || (!kid.parentId && !kid.establishementId)) {
+                throw new Error("Missing required fields: name, dateOfBirth, gender, and either parentId or establishementId");
+            }
+            if (kid.gender !== "Male" && kid.gender !== "Female") {
+                throw new Error("Invalid gender value. Must be 'Male' or 'Female'");
+            }
+
+            // Ensure preferences is an array
+            kid.preferences = kid.preferences || [];
+
+            const newKidRef = doc(collection(db, "kids"));
+            await setDoc(newKidRef, kid);
+            return { _id: newKidRef.id, ...kid } as KidResponse;
+        } catch (error: unknown) {
+            throw new Error("Failed to create kid: " + (error instanceof Error ? error.message : "Unknown error"));
+        }
+    };
+
+    // Update an existing kid
+    static updateKid = async (id: string, kid: Partial<KidResponse>): Promise<KidResponse> => {
+        try {
+            const kidDoc = doc(db, "kids", id);
+            await setDoc(kidDoc, kid, { merge: true }); // Merge fields instead of overwriting
+            return { _id: id, ...kid } as KidResponse;
+        } catch (error: unknown) {
+            throw new Error("Failed to update kid: " + (error instanceof Error ? error.message : "Unknown error"));
+        }
+    };
+
+    // Delete a kid by ID
+    static deleteKid = async (id: string): Promise<void> => {
+        try {
+            const kidDoc = doc(db, "kids", id);
+            await deleteDoc(kidDoc);
+        } catch (error: unknown) {
+            throw new Error("Failed to delete kid: " + (error instanceof Error ? error.message : "Unknown error"));
+        }
+    };
 }

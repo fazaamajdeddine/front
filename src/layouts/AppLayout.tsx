@@ -1,7 +1,7 @@
 // src/layouts/AppLayout.tsx
-import React from "react";
 import Navbar from "../components/AppNavbar";
 import Footer from "../components/AppFooter";
+import RadioPlayer from "../components/RadioPlayer"; // Import the RadioPlayer component
 import { Outlet } from "react-router-dom"; // Used to render nested routes
 
 export const AppLayout = () => {
@@ -14,6 +14,9 @@ export const AppLayout = () => {
       <main className="flex-grow">
         <Outlet /> {/* This renders the nested routes like HomePage, Library, etc. */}
       </main>
+
+      {/* Radio Player */}
+      <RadioPlayer /> {/* Add the RadioPlayer component here */}
 
       {/* Footer */}
       <Footer />

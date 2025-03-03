@@ -1,22 +1,22 @@
+// src/components/FormAddKid.tsx
 import { useState, FormEvent } from "react";
 import { useKidsStore } from "../stores/kids/kids.store";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 import { KidResponse } from "../interfaces";
 import { Gender, Preferences } from "../helpers/helpers";
-import { useAuthStore } from "../stores/auth/auth.store"; // Import the auth store
+import { useAuthStore } from "../stores/auth/auth.store";
 
 export const FormAddKid = () => {
   const createKid = useKidsStore((state) => state.createKid);
   const navigate = useNavigate();
-  const { user } = useAuthStore((state) => state); // Access the current user from auth store
 
   const [formData, setFormData] = useState<KidResponse>({
-    _id: "", // Not required for new kids, will be generated on the backend
+    zid: "",
     name: "",
     dateOfBirth: "",
     preferences: [],
-    gender: "Male", // Default gender
+    gender: "Male",
   });
 
   const handleGenderSelect = (gender: Gender) => {
@@ -46,15 +46,16 @@ export const FormAddKid = () => {
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { name, dateOfBirth, gender, preferences } = formData;
+    const { name, dateOfBirth, gender } = formData;
 
     if (!name || !dateOfBirth || !gender) {
       return toast.error("All fields are mandatory!");
     }
 
     try {
-      // Pass the parentId from the formData, which is already set to the logged-in user's ID
-      await createKid({ ...formData });
+      // Pass the parentId from the auth store
+      const userId = useAuthStore.getState().user?._id; // Get the current user ID from the auth store
+      await createKid({ ...formData, parentId: userId }); // Pass the parentId
       toast.success("Kid registered successfully!");
       navigate("/entranceGate");
     } catch (error) {
@@ -64,17 +65,16 @@ export const FormAddKid = () => {
   };
 
   return (
-    <div className="md:w-2/3 lg:w-1/2  p-10 shadow-lg flex flex-col gap-4">
+    <div className="md:w-2/3 lg:w-1/2 p-10 shadow-lg flex flex-col gap-4">
       <h2 className="text-gray-600 uppercase text-center text-xl font-bold">
         Register a New Kid
       </h2>
       <form onSubmit={handleSubmit} className="flex flex-col gap-4">
         {/* Gender Selection */}
-        <div className="flex justify-center gap-8"> {/* Center the gender cards horizontally */}
+        <div className="flex justify-center gap-8">
           <div
             onClick={() => handleGenderSelect(Gender.Male)}
-            className={`kid-card cursor-pointer group relative flex flex-col items-center bg-white p-2 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out ${formData.gender === "Male" ? "border-[#FBA628] border-4" : ""
-              }`}
+            className={`kid-card cursor-pointer group relative flex flex-col items-center bg-white p-2 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out ${formData.gender === "Male" ? "border-[#FBA628] border-4" : ""}`}
           >
             <img
               src={"/bkids.svg"}
@@ -86,8 +86,7 @@ export const FormAddKid = () => {
 
           <div
             onClick={() => handleGenderSelect(Gender.Female)}
-            className={`kid-card cursor-pointer group relative flex flex-col items-center bg-white p-2 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out ${formData.gender === "Female" ? "border-border-[#FBA628] border-4" : ""
-              }`}
+            className={`kid-card cursor-pointer group relative flex flex-col items-center bg-white p-2 rounded-lg shadow-lg transform transition-all duration-500 ease-in-out ${formData.gender === "Female" ? "border-[#FBA628] border-4" : ""}`}
           >
             <img
               src={"/gkids.svg"}
@@ -126,10 +125,7 @@ export const FormAddKid = () => {
                 key={preference}
                 type="button"
                 onClick={() => handlePreferenceToggle(preference)}
-                className={`px-4 py-2 rounded-full text-sm font-medium ${formData.preferences.includes(preference)
-                  ? "bg-indigo-600 text-white"
-                  : "bg-gray-200 text-gray-600"
-                  }`}
+                className={`px-4 py-2 rounded-full text-sm font-medium ${formData.preferences.includes(preference) ? "bg-indigo-600 text-white" : "bg-gray-200 text-gray-600"}`}
               >
                 {preference}
               </button>
