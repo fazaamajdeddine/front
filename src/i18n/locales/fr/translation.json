@@ -1,0 +1,84 @@
+{
+    "common": {
+      "home": "Accueil",
+      "library": "Bibliothèque",
+      "videos": "Vidéos",
+      "contact": "Contact",
+      "login": "Connexion",
+      "signup": "S'inscrire",
+      "search": "Rechercher...",
+      "findYourBook": "Trouvez votre livre",
+      "languages": "Langues",
+      "explore": "Explorer",
+      "getStarted": "Commencer"
+    },
+    "landing": {
+      "topNav": {
+        "logo": "Mayra Divertissement",
+        "home": "Accueil",
+        "contactUs": "Contactez-nous",
+        "getStarted": "Commencer"
+      },
+      "heroCarousel": {
+        "slide1": {
+          "title": "Lire, Jouer, Apprendre",
+          "description": "Histoires et jeux interactifs pour enfants",
+          "button": "Commencer"
+        },
+        "slide2": {
+          "title": "Autonomiser les Enseignants",
+          "description": "Tableau de bord de gestion scolaire",
+          "button": "Commencer"
+        },
+        "slide3": {
+          "title": "Les Histoires Prennent Vie",
+          "description": "Jouets, livres et marchandises",
+          "button": "Commencer"
+        },
+        "slide4": {
+          "title": "Suivez le Parcours de Votre Enfant",
+          "description": "Application pour parents",
+          "buttons": {
+            "ios": "Télécharger pour iOS",
+            "android": "Télécharger pour Android"
+          }
+        }
+      },
+      "testimonials": {
+        "title": "Ce que Disent les Parents",
+        "testimonial1": "Palmyra a amélioré les compétences de lecture de mon enfant !",
+        "testimonial2": "Excellente application pour enseigner l'arabe à mes enfants",
+        "testimonial3": "Mon enfant adore les jeux interactifs et les histoires",
+        "testimonial4": "Excellent outil éducatif pour les enfants"
+      },
+      "statistics": {
+        "title": "Pourquoi la Tunisie en a Besoin",
+        "stat1": "1,2M d'enfants ont besoin de contenu",
+        "stat2": "70% d'utilisation de tablettes",
+        "stat3": "40% d'amélioration des compétences en lecture",
+        "stat4": "65% d'augmentation de l'engagement"
+      },
+      "contact": {
+        "title": "Contactez-nous",
+        "name": "Nom",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Envoyer"
+      },
+      "footer": {
+        "copyright": "Tous droits réservés © 2025 Mayra Divertissement",
+        "terms": "Conditions Générales",
+        "privacy": "Politique de Confidentialité",
+        "followUs": "Suivez-nous"
+      }
+    },
+    "homePage": {
+      "readAndPlay": "LIRE ET JOUER",
+      "funToCreate": "Plaisir de Créer",
+      "exploreText": "Explorer",
+      "topPicks": "MEILLEURS CHOIX",
+      "sortByCategory": "Trier par catégorie",
+      "excitingJourneys": "Des voyages passionnants qui éveillent la curiosité. Des mondes fantaisistes remplis de magie et de merveilles."
+    }
+  }
+  

@@ -11,11 +11,15 @@ import { DinoStoryBook } from "../pages/storyPages/DinoStoryPage";
 import Library from "../pages/Library";
 import Videos from "../pages/Videos";
 import Contact from "../pages/Contact";
+import Landing from "../pages/Landing";
 
 export const AppRouter = () => {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Landing Page - New Default Entry Point */}
+        <Route path="/" element={<Landing />} />
+
         {/* Auth Routes */}
         <Route path="/auth" element={<AuthLayout />}>
           <Route index element={<LoginPage />} /> {/* This matches "/auth" */}
@@ -27,8 +31,8 @@ export const AppRouter = () => {
         <Route path="/addKid" element={<NewKid />} />
 
         {/* App Routes */}
-        <Route path="/" element={<AppLayout />}>
-          <Route index element={<HomePage />} /> {/* Default home page */}
+        <Route path="/home" element={<AppLayout />}>
+          <Route index element={<HomePage />} /> {/* Home page moved to /home */}
           <Route path="library" element={<Library />} />
           <Route path="videos" element={<Videos />} />
           <Route path="contact" element={<Contact />} />
@@ -39,7 +43,7 @@ export const AppRouter = () => {
         <Route path="/story/story-1" element={<DinoStoryBook />} />
 
         {/* Redirect Fallback */}
-        <Route path="*" element={<Navigate to="/auth" />} />
+        <Route path="*" element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
   );

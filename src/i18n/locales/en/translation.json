@@ -1,0 +1,84 @@
+{
+    "common": {
+      "home": "Home",
+      "library": "Library",
+      "videos": "Videos",
+      "contact": "Contact",
+      "login": "Login",
+      "signup": "Sign Up",
+      "search": "Search...",
+      "findYourBook": "Find your book",
+      "languages": "Languages",
+      "explore": "Explore",
+      "getStarted": "Get Started"
+    },
+    "landing": {
+      "topNav": {
+        "logo": "Mayra Entertainment",
+        "home": "Home",
+        "contactUs": "Contact Us",
+        "getStarted": "Get Started"
+      },
+      "heroCarousel": {
+        "slide1": {
+          "title": "Read, Play, Learn",
+          "description": "Interactive kids' stories and games",
+          "button": "Get Started"
+        },
+        "slide2": {
+          "title": "Empowering Teachers",
+          "description": "School management dashboard",
+          "button": "Get Started"
+        },
+        "slide3": {
+          "title": "Stories Come to Life",
+          "description": "Toys, books, and merchandise",
+          "button": "Get Started"
+        },
+        "slide4": {
+          "title": "Track Child's Journey",
+          "description": "Parent app",
+          "buttons": {
+            "ios": "Download for iOS",
+            "android": "Download for Android"
+          }
+        }
+      },
+      "testimonials": {
+        "title": "What Parents Say",
+        "testimonial1": "Palmyra improved my child's reading skills!",
+        "testimonial2": "Great app for teaching my kids Arabic",
+        "testimonial3": "My child loves the interactive games and stories",
+        "testimonial4": "Excellent educational tool for children"
+      },
+      "statistics": {
+        "title": "Why Tunisia Needs This",
+        "stat1": "1.2M kids need content",
+        "stat2": "70% tablet usage",
+        "stat3": "40% reading skills improvement",
+        "stat4": "65% engagement increase"
+      },
+      "contact": {
+        "title": "Contact Us",
+        "name": "Name",
+        "email": "Email",
+        "message": "Message",
+        "submit": "Submit"
+      },
+      "footer": {
+        "copyright": "All rights reserved © 2025 Mayra Entertainment",
+        "terms": "Terms & Conditions",
+        "privacy": "Privacy Policy",
+        "followUs": "Follow Us"
+      }
+    },
+    "homePage": {
+      "readAndPlay": "READ AND PLAY",
+      "funToCreate": "Fun to Create",
+      "exploreText": "Explore",
+      "topPicks": "TOP PICKS",
+      "sortByCategory": "Sort by category",
+      "excitingJourneys": "Exciting journeys that ignite curiosity. Whimsical worlds filled with magic and wonder."
+    }
+  }
+  
