@@ -14,7 +14,6 @@ export const EntranceGate = () => {
     const logout = useAuthStore((state) => state.logoutUser); // Access logout function
 
     const [selectedKid, setSelectedKid] = useState<any>(null);
-    const [isLanguageOpen, setIsLanguageOpen] = useState(false);
     const [isLoading, setIsLoading] = useState(false); // Loading state
 
     useEffect(() => {
@@ -31,7 +30,6 @@ export const EntranceGate = () => {
         fetchKids();
     }, [getAllKids]);
 
-    const toggleLanguageDropdown = () => setIsLanguageOpen(!isLanguageOpen);
     const handleLogout = () => {
         logout();
         navigate("/login");
@@ -46,7 +44,7 @@ export const EntranceGate = () => {
 
             {/* Language Dropdown */}
             <div className="absolute top-4 right-4 z-10">
-                <LanguageDropdown isOpen={isLanguageOpen} toggle={toggleLanguageDropdown} />
+                <LanguageDropdown />
             </div>
 
             {/* Loading State */}

@@ -3,7 +3,6 @@ import { useTranslation } from 'react-i18next';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import LanguageDropdown from '../components/LanguageDropdown';
 
 const HeroCarousel: React.FC = () => {
   const { t } = useTranslation();
@@ -50,7 +49,7 @@ const HeroCarousel: React.FC = () => {
             </div>
             <div className="md:w-1/2">
               <img 
-                src="/hero-slide1.svg" 
+                src="/slide1.webp" 
                 alt="Kids using tablet" 
                 className="w-full h-auto rounded-lg shadow-lg"
               />
@@ -77,7 +76,7 @@ const HeroCarousel: React.FC = () => {
             </div>
             <div className="md:w-1/2">
               <img 
-                src="/hero-slide2.svg" 
+                src="/slide2.webp" 
                 alt="Teachers on laptops" 
                 className="w-full h-auto rounded-lg shadow-lg"
               />
@@ -104,7 +103,7 @@ const HeroCarousel: React.FC = () => {
             </div>
             <div className="md:w-1/2">
               <img 
-                src="/hero-slide3.svg" 
+                src="/slide3.webp" 
                 alt="Product mockups" 
                 className="w-full h-auto rounded-lg shadow-lg"
               />
@@ -145,7 +144,7 @@ const HeroCarousel: React.FC = () => {
             </div>
             <div className="md:w-1/2">
               <img 
-                src="/hero-slide4.svg" 
+                src="/slide4.jpeg" 
                 alt="Parent using app" 
                 className="w-full h-auto rounded-lg shadow-lg"
               />

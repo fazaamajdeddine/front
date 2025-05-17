@@ -10,12 +10,6 @@ export const AuthLayout = () => {
 
   console.log("Auth Status:", authStatus); // Debugging line
 
-  const [isLanguageDropdownOpen, setLanguageDropdownOpen] = useState(false);
-
-  const toggleLanguageDropdown = () => {
-    setLanguageDropdownOpen((prev) => !prev);
-  };
-
   if (authStatus === "pending") return <div>Loading...</div>;
   if (authStatus === "authorized") return <Navigate to="/entranceGate" />;
 
@@ -26,7 +20,7 @@ export const AuthLayout = () => {
         <img src="/logo.svg" alt="Logo" className="w-36" />
         <div className="flex items-center space-x-4">
           {/* Use the LanguageDropdown component */}
-          <LanguageDropdown isOpen={isLanguageDropdownOpen} toggle={toggleLanguageDropdown} />
+          <LanguageDropdown />
           {!isRegisterPage && (
             <Link to="/auth/register" className="px-4 py-2 bg-[#FBA628] text-black rounded-md">
               Sign Up
@@ -46,7 +40,7 @@ export const AuthLayout = () => {
       {!isRegisterPage && (
 
         <footer className="py-4 text-center text-gray-500">
-          Don’t have an account?{" "}
+          Don't have an account?{" "}
           <Link to={"register"} className="text-indigo-600 underline">
             Create one here
           </Link>
