@@ -6,10 +6,10 @@ const TestimonialsSection: React.FC = () => {
 
     // Testimonial data
     const testimonials = [
-        { id: 1, text: t('landing.testimonials.testimonial1'), author: 'Sarah M.', image: '/testimonial1.jpeg' },
-        { id: 2, text: t('landing.testimonials.testimonial2'), author: 'Ahmed K.', image: '/testimonial2.jpeg' },
-        { id: 3, text: t('landing.testimonials.testimonial3'), author: 'Leila B.', image: '/testimonial3.jpeg' },
-        { id: 4, text: t('landing.testimonials.testimonial4'), author: 'Youssef T.', image: '/testimonial4.jpeg' }
+        { id: 1, text: t('landing.testimonials.testimonial1'), author: 'Sarah M.', image: '/testemonial1.jpeg' },
+        { id: 2, text: t('landing.testimonials.testimonial2'), author: 'Ahmed K.', image: '/testemonial2.jpeg' },
+        { id: 3, text: t('landing.testimonials.testimonial3'), author: 'Leila B.', image: '/testemonial3.jpeg' },
+        { id: 4, text: t('landing.testimonials.testimonial4'), author: 'Youssef T.', image: '/testemonial4.jpeg' }
     ];
 
     return (
